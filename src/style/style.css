@@ -1,0 +1,12 @@
+.identitas{
+    color: #e07a5f;
+    padding: 5px 10px;
+    border: 1px solid #e07a5f;
+    width: 15rem;
+    margin: 10px 20px;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

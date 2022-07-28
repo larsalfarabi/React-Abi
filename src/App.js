@@ -1,8 +1,9 @@
 // import logo from './logo.svg';
-// import './App.css';
-import Header from "./Component/header"
+
+import Header from "./Component/header";
 import React from "react";
 import Tes from "./Component/module/tes";
+import { Input, Button } from "./Component/name";
 
 // function App() {
 //   return (
@@ -28,14 +29,28 @@ import Tes from "./Component/module/tes";
 // Belajar React JS
 // export default App;
 
-// function App () {
-//   return (
-//     <div>
-//       <h3>Freshly juice</h3>;
-//     </div>
-//   )
-// }
+// import './App.css';
 
+function App() {
+  return (
+    <div>
+      <h3> Freshly juice </h3>;
+    </div>
+  );
+}
+
+export default App;
+// import { Component } from "react";
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <h3> Freshly juice </h3>;{" "}
+//       </div>
+//     );
+//   }
+// }
 // function App() {
 //   let a = 20;
 //   let b = 30;
@@ -49,15 +64,15 @@ import Tes from "./Component/module/tes";
 //     </React.Fragment>
 //   );
 // }
-function App () {
-  return(
-    <React.Fragment>
-      <h1>Latihan Export Import</h1>
-      <Header />
-      <Tes />
-    </React.Fragment>
-  )
-}
+// function App() {
+//   return (
+//     <React.Fragment>
+//       <h1> Latihan Export Import </h1> <Header />
+//       <Tes />
+//       <Input />
+//       <Button />
+//     </React.Fragment>
+//   );
+// }
 
-export default App;
 

@@ -12,6 +12,8 @@ export default function Latihan({ data }) {
               <h2>Tipe</h2>
               <p>{item.brand[0].nama}</p>
               <p>{item.brand[0].harga}</p>
+              <p>{item.brand[1].nama}</p>
+              <p>{item.brand[1].harga}</p>
             </div>
           );
         })}

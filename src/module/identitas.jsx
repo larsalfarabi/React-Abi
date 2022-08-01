@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Identitas({ nama= 'siswa', kelas= 'X', nilai= 0 }) {
+export default function Identitas({ nama = "siswa", kelas = "X", nilai = 0 }) {
   return (
     <React.Fragment>
       <div className="identitas">

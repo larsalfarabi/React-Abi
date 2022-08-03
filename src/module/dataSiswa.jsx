@@ -6,26 +6,27 @@ export default function DataSiswa({ data, nilai }) {
       <h1>isi komponen data siswa</h1>
       {data?.map(function (item, index) {
         return (
-            <div className="identitas">
-              <p>Nama : {item.nama}</p>
-              <p>Kelas : {item.kelas}</p>
-              <p>Nilai : {item.nilai}</p>
-            </div>
+          <div className="identitas">
+            <p>Nama : {item.nama}</p>
+            <p>Kelas : {item.kelas}</p>
+            <p>Nilai : {item.nilai}</p>
+          </div>
         );
       })}
       <div>
         <p>Nama: {nilai.nama}</p>
         <p>Kelas: {nilai.kelas}</p>
         <div>
-          nilai adalah
-          {nilai.nilai?.map((item)=>{
-            return(
-              <p>{item}</p>
-            )
+          nilai yang didapat
+          {nilai.nilai?.map((item,index) => {
+            return (
+              <div>
+                <p>Matematika: {item}</p>
+              </div>
+            );
           })}
         </div>
       </div>
-      
     </React.Fragment>
   );
 }

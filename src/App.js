@@ -9,7 +9,14 @@ function App() {
   let [produk,setProduk] = React.useState([
     {
         jenis: "Elektronik",
-        produk: "Handphone",
+        produk:[
+            {
+                nama:"Handphone",
+            },
+            {
+                nama:"Ipad",
+            },
+        ],
         brand: [
             {
                 nama: "Samsung",
@@ -23,7 +30,14 @@ function App() {
     },
     {
         jenis: "Transportasi",
-        produk: "Mobil",
+        produk: [
+            {
+                nama:"Mobil",
+            },
+            {
+                nama:"Motor",
+            },
+        ],
         brand: [
             {
                 nama: "Toyota",
@@ -41,7 +55,7 @@ function App() {
   return (
     <React.Fragment>
       <h1>Latihan 1</h1>
-      <h1>Data Produk Indonesia</h1>
+
       <Latihan data={produk}/>
 
     </React.Fragment>

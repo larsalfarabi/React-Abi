@@ -57,3 +57,21 @@ label {
   font-size: 13px;
   font-weight: 700;
 }
+
+.submit{
+  background-color: white;
+  padding: 1rem 2rem;
+  margin-top: 20px;
+  border-radius: 5px;;
+  padding: 1rem 2rem;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+.submit:hover{
+  background-color: #3b2b3a;
+  color: #fdc328;
+  padding: 1rem 2rem;
+  margin-top: 20px;
+  border-radius: 5px;
+}

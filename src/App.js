@@ -1,10 +1,11 @@
 // import logo from './logo.svg';
 
 import React from "react";
-import Layout from "./komponen/layout";
+// import Layout from "./komponen/layout";
 import Button from "./komponen/button";
 import Input from "./komponen/input";
 import "./style/style.css";
+import Card from "./komponen/card";
 
 export default function App() {
   const [values, setValues] = React.useState({
@@ -14,67 +15,114 @@ export default function App() {
     confirmPassword: "",
   });
 
+  const [data, setData] = React.useState([]);
+  const [errors, setError] = React.useState({});
+
+  const handleBlur = (e) => {
+    e.preventDefault();
+
+    if (e.target.value === "") {
+      setError((errors) => {
+        return {
+          ...errors,
+          [e.target.name]: true,
+        };
+      });
+    }
+  };
+
   const handleChange = (e) => {
     e.preventDefault();
     console.log("ok siap jalan");
-    setValues((values)=>{
-        return{
-            ...values,
-            [e.target.name]: e.target.value
-        }
-    })
+    setValues((values) => {
+      return {
+        ...values,
+        [e.target.name]: e.target.value,
+      };
+    });
+    if (e.target.value !== "") {
+      setError((errors) => {
+        return {
+          ...errors,
+          [e.target.name]: false,
+        };
+      });
+    } else {
+      setError({
+        ...errors,
+        [e.target.name]: true,
+      });
+    }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submit");
+
+    values.id = new Date().getTime()
+    setData((data) => {
+      return [...data, values];
+    });
+
+    // setValues((values) => {
+    //   return {
+    //     name: "",
+    //     email: "",
+    //     password: "",
+    //     confirmPassword: "",
+    //   };
+    // });
+  };
+
+  console.log("error", errors);
   return (
-    <React.Fragment>
-      <div style={{ display: "flex" }}>
+    <React.Fragment style={{}}>
+      <div style={{ display: "flex", background: "#F1F3F6", height: "100vh" }}>
         <div style={{ width: "50%" }}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <Input
+              isError={errors?.name}
+              textError={"wajib diisi"}
               name="name"
               value={values.name}
               label={"Username"}
               placeholder={"Username"}
-              onChange={(event) => {
-                event.preventDefault();
-                console.log("ok jalan");
-                setValues((values) => {
-                  return {
-                    ...values,
-                    name: event.target.value,
-                  };
-                });
-              }}
+              onBlur={handleBlur}
+              onChange={handleChange}
             />{" "}
             <Input
+              isError={errors?.email}
+              textError={"wajib diisi"}
               name="email"
               value={values.email}
               label={"Email"}
               placeholder={"Email"}
+              onBlur={handleBlur}
               onChange={handleChange}
             />{" "}
             <Input
+              isError={errors?.password}
+              textError={"wajib diisi"}
               name="password"
               value={values.password}
               label={"Password"}
               placeholder={"Password"}
+              onBlur={handleBlur}
               onChange={handleChange}
             />{" "}
             <Input
+              isError={errors?.confirmPassword}
+              textError={"wajib diisi"}
               name="confirmPassword"
               value={values.confirmPassword}
               label={"Konfirmasi Password"}
               placeholder={"Ulangi Password"}
+              onBlur={handleBlur}
               onChange={handleChange}
             />{" "}
             <Button title={"Simpan"} />{" "}
           </form>{" "}
         </div>
-        <div>
-          <p>Username: {values?.name}</p>
-          <p>Email: {values?.email}</p>
-          <p>Password: {values?.password}</p>
-          <p>Konfirmasi Password: {values?.confirmPassword} </p>
-        </div>
+        <Card data={data} setData={setData}/>
       </div>
     </React.Fragment>
   );

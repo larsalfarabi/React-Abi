@@ -28,6 +28,7 @@ export default function App() {
       <h1>Message: {message}</h1>
       <h1>Count: {count}</h1>
       <h3>{message === 10 ? 'ini sepuluh' : "bukan sepuluh"}</h3>
+      <h3>{count === 15 ? 'ini lima belas' : "bukan lima belas"}</h3>
       <button
         onClick={() => {
           setCount(count + 1);

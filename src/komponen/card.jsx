@@ -27,9 +27,11 @@ export default function Card({ data, setData }) {
               <p>id : {item.id}</p>
               <p>Username: {item.name}</p>
               <p>Email: {item.email}</p>
-              <p>Password: {item.password}</p>
-              <p>konfirmasi Password: {item.confirmPassword}</p>
-              <button value={item?.id} onClick={handleDelete}>Hapus</button>
+              <p>Tempat Lahir: {item.tempat}</p>
+              <p>Tanggal Lahir: {item.date}</p>
+              <p>Jenis Kelamin: {item.kelamin}</p>
+              <button className="delete" value={item?.id} onClick={handleDelete}>Hapus</button>
+              <button className="update" value={item?.id} onClick={handleDelete}>Update</button>
             </div>
           );
         })}

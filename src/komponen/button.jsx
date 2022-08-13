@@ -26,7 +26,7 @@ import React from "react";
 //   );
 // }
 
-export default function Button({ title, color = "#1a73e8", disabled,...props }) {
+export default function Button({ title, color = "red", disabled,...props }) {
   return (
     <React.Fragment>
       <button

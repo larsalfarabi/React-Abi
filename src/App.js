@@ -6,11 +6,15 @@ import Button from "./komponen/button";
 import Input from "./komponen/input";
 import "./style/style.css";
 import Card from "./komponen/card";
+import Select from "./komponen/select";
 
 export default function App() {
   const [values, setValues] = React.useState({
     name: "",
     email: "",
+    tempat: "",
+    date: "",
+    kelamin: "",
     password: "",
     confirmPassword: "",
   });
@@ -31,6 +35,23 @@ export default function App() {
     }
   };
 
+
+  const handleReset = (e) =>{
+    e.preventDefault()
+    console.log('reset');
+    
+    setValues((values)=>{
+      return {
+        name: "",
+        email: "",
+        tempat: "",
+        date: "",
+        kelamin: "",
+        password: "",
+        confirmPassword: "",
+      }
+    })
+  }
   const handleChange = (e) => {
     e.preventDefault();
     console.log("ok siap jalan");
@@ -40,17 +61,17 @@ export default function App() {
         [e.target.name]: e.target.value,
       };
     });
-    if (e.target.value !== "") {
+    if (e.target.value === "") {
       setError((errors) => {
         return {
           ...errors,
-          [e.target.name]: false,
+          [e.target.name]: true,
         };
       });
     } else {
       setError({
         ...errors,
-        [e.target.name]: true,
+        [e.target.name]: false,
       });
     }
   };
@@ -58,26 +79,35 @@ export default function App() {
     e.preventDefault();
     console.log("form submit");
 
-    values.id = new Date().getTime()
+    values.id = new Date().getTime();
     setData((data) => {
       return [...data, values];
     });
 
-    // setValues((values) => {
-    //   return {
-    //     name: "",
-    //     email: "",
-    //     password: "",
-    //     confirmPassword: "",
-    //   };
-    // });
+    setError((errors)=>{
+      return {
+        ...values,
+        [e.target.name]: e.target.value,
+      };
+    });
+    setValues((values) => {
+      return {
+        name: "",
+        email: "",
+        tempat: "",
+        date: "",
+        kelamin: "",
+        password: "",
+        confirmPassword: "",
+      };
+    });
   };
 
   console.log("error", errors);
   return (
-    <React.Fragment style={{}}>
-      <div style={{ display: "flex", background: "#F1F3F6", height: "100vh" }}>
-        <div style={{ width: "50%" }}>
+    <React.Fragment>
+      <div className="kotak">
+        <div className="form" isError={errors?.name} textError={"Form wajib diisi"}>
           <form onSubmit={handleSubmit}>
             <Input
               isError={errors?.name}
@@ -96,6 +126,37 @@ export default function App() {
               value={values.email}
               label={"Email"}
               placeholder={"Email"}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />{" "}
+            <Input
+              isError={errors?.tempat}
+              textError={"wajib diisi"}
+              name="tempat"
+              value={values.tempat}
+              label={"Tempat Lahir"}
+              placeholder={"Tempat Lahir"}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />{" "}
+            <Input
+              isError={errors?.date}
+              textError={"wajib diisi"}
+              name="date"
+              type="date"
+              value={values.date}
+              label={"Tanggal Lahir"}
+              placeholder={"Tanggal Lahir"}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />{" "}
+            <Select
+              isError={errors?.kelamin}
+              textError={"wajib diisi"}
+              name="kelamin"
+              value={values.kelamin}
+              label={"Jenis Kelamin"}
+              placeholder={"Pilih:"}
               onBlur={handleBlur}
               onChange={handleChange}
             />{" "}
@@ -119,10 +180,13 @@ export default function App() {
               onBlur={handleBlur}
               onChange={handleChange}
             />{" "}
-            <Button title={"Simpan"} />{" "}
+            <Button title={"Reset"} onClick={handleReset}/>{" "}
+            <Button title={"Simpan"} color={"blue"}  />{" "}
           </form>{" "}
         </div>
-        <Card data={data} setData={setData}/>
+        <div className="data">
+          <Card data={data} setData={setData} />
+        </div>
       </div>
     </React.Fragment>
   );

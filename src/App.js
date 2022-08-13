@@ -1,16 +1,13 @@
 // import logo from './logo.svg';
 
 import React from "react";
-<<<<<<< HEAD
 // import Layout from "./komponen/layout";
 import Button from "./komponen/button";
 import Input from "./komponen/input";
 import "./style/style.css";
 import Card from "./komponen/card";
 import Select from "./komponen/select";
-=======
 import "./style/style.css"
->>>>>>> 596655e14b132dfcbbd160c0a962250d3687a74e
 
 export default function App() {
   const [values, setValues] = React.useState({

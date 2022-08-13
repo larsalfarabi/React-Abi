@@ -1,12 +1,16 @@
 // import logo from './logo.svg';
 
 import React from "react";
+<<<<<<< HEAD
 // import Layout from "./komponen/layout";
 import Button from "./komponen/button";
 import Input from "./komponen/input";
 import "./style/style.css";
 import Card from "./komponen/card";
 import Select from "./komponen/select";
+=======
+import "./style/style.css"
+>>>>>>> 596655e14b132dfcbbd160c0a962250d3687a74e
 
 export default function App() {
   const [values, setValues] = React.useState({
@@ -192,35 +196,3 @@ export default function App() {
   );
 }
 
-// function App() {
-//   let [count, setCount] = React.useState(0);
-//   const handleTambah = () => {
-//     setCount(count + 1);
-//   };
-//   const handleKurang = () => {
-//     setCount(count - 1);
-//   };
-//   const handleResets = () => {
-//     setCount(0);
-//   };
-
-//   return (
-//     <React.Fragment>
-//       <h1>Count = {count}</h1>
-//       <Button onClick={handleTambah} title="Tambah" color="blue" />
-//       <Button
-//         disabled={count <= 0 ? true : false}
-//         onClick={handleKurang}
-//         title="Kurang"
-//         color="blue"
-//       />
-//       <Button
-//         disabled={count === 0 ? true : false}
-//         onClick={handleResets}
-//         title="Resets"
-//       />
-//     </React.Fragment>
-//   );
-// }
-
-// export default App;

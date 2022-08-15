@@ -33,6 +33,13 @@ export default function App() {
           [e.target.name]: true,
         };
       });
+    }else{
+      setError((errors) => {
+        return {
+          ...errors,
+          [e.target.name]: false
+        }
+      })
     }
   };
 
@@ -83,14 +90,7 @@ export default function App() {
     values.id = new Date().getTime();
     setData((data) => {
       return [...data, values];
-    });
-
-    setError((errors)=>{
-      return {
-        ...values,
-        [e.target.name]: e.target.value,
-      };
-    });
+    })
     setValues((values) => {
       return {
         name: "",
@@ -108,7 +108,7 @@ export default function App() {
   return (
     <React.Fragment>
       <div className="kotak">
-        <div className="form" isError={errors?.name} textError={"Form wajib diisi"}>
+        <div className="form">
           <form onSubmit={handleSubmit}>
             <Input
               isError={errors?.name}

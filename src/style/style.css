@@ -1,0 +1,53 @@
+* {
+  margin: 5px;
+}
+
+.button-simpan {
+  padding: 8px 100px;
+  border-radius: 10px;
+  color: white;
+}
+.input {
+  border: none;
+  width: 25rem;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  background: #e8e8e8;
+  box-shadow: 20px 20px 45px #c5c5c5, -20px -20px 45px #ffffff;
+  transition: 0.3s;
+}
+
+.input:focus {
+  outline-color: #e8e8e8;
+  background: #e8e8e8;
+  box-shadow: inset 20px 20px 60px #c5c5c5, inset -20px -20px 60px #ffffff;
+  transition: 0.3s;
+}
+
+.error {
+  color: red;
+  font-style: italic;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.submit{
+    background-color: #00b4d8;
+    color:  white;
+    width: 17rem;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+
+  .delete{
+    background-color: white;
+    color: #00b4d8;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 0.3rem 1rem;
+
+  }

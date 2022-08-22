@@ -1,13 +1,9 @@
-// import logo from './logo.svg';
-
 import React from "react";
-import "./style/style.css"
 
+const App = () => (
+  <div className="bg-black w-full overflow-hidden">
+    <h1>Hello, World!</h1>
+  </div>
+);
 
-export default function App() {
-  return (
-    <React.Fragment>
-      <h1 className="bg-red-500">Branch Main</h1>
-    </React.Fragment>
-  );
-}
+export default App;

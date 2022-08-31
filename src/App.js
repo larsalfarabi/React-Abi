@@ -50,7 +50,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/setting" element={<Setting />} />
         <Route path="/about" element={<About />} />
-        <Route path="/about/:id/:nama" element={<Detail />} />
+        <Route path="/about/:id/:nama/:kelas" element={<Detail />} />
       </Routes>
     </React.Fragment>
   );

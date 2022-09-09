@@ -1,5 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+
 .input {
-    background-color: 'red';
-    padding: 5px 10px;
-    border: 1px solid red;
+  background-color: "red";
+  padding: 5px 10px;
+  border: 1px solid red;
+}
+.p {
+  background-color: #22223d;
+}
+.card {
+  width: 356px;
+  height: 177px;
+  margin: 10px auto;
+  background-color: #30304d;
+  box-shadow: 0 8px 24px #2a2635;
+  color: white;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  /* z-index: 1; */
+}
+.card-title {
+  color: #9388f1;
+  font-size: 16px;
+  font-family: "Quicksand", sans-serif;
+  border-bottom: 0.1px solid grey;
+}
+.card-body {
+  color: #9388f1;
+  font-size: 32px;
+  font-family: "Quicksand", sans-serif;
+}
+.card-tempat {
+  font-size: 13px;
+  font-family: "Quicksand", sans-serif;
+}
+.tools {
+  display: flex;
+  align-items: center;
+  padding: 9px;
+}
+
+.circle {
+  padding: 0 4px;
+}
+
+.box {
+  display: inline-block;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  padding: 1px;
+  border-radius: 50%;
+}
+
+.red {
+  background-color: #ff605c;
+}
+
+.yellow {
+  background-color: #ffbd44;
+}
+
+.green {
+  background-color: #00ca4e;
 }

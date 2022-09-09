@@ -10,7 +10,6 @@ import User from "./pages/User";
 export default function App() {
   return (
     <div>
-      <h1 className="bg-red-500"> branch API</h1>
       <Routes>
         <Route path="/user" element={<User/>} />
         <Route path="/user/:id/:detail" element={<DetailUser/>} />

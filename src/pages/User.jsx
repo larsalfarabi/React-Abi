@@ -1,79 +1,49 @@
 import axios from "axios";
 import React from "react";
+import "../styles/styles.css";
 
 const User = () => {
-  const [users, setUsers] = React.useState([]); //state untuk menyimpan data user dari API
+  const [quran, setQuran] = React.useState([]); //state untuk menyimpan data user dari API
   const [page, setPage] = React.useState(1);
 
   const getUsersHandle = async () => {
     try {
-      const response = await axios.get(
-        `https://reqres.in/api/users?page=${page}`
-      );
+      const response = await axios.get(`https://equran.id/api/surat`);
       console.log("Response =>", response.data);
-      setUsers(response.data.data);
-      setPage(response.data.page);
+      setQuran(response.data);
+      setPage(response.data);
     } catch (err) {}
   };
 
-  console.log("User =>", users);
+  console.log("User =>", quran);
   console.log("page =>", page);
 
   React.useEffect(() => {
     getUsersHandle();
-  }, [page]);
+  }, []);
   return (
-    <div>
-      <h1>Tabel User</h1>
-      <table className="table-auto">
-        <thead>
-          <tr className="text-left border">
-            <th>No</th>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Avatar</th>
-            <th>Detail</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => {
-            return (
-              <tr key={index} className="text-left border">
-                <td>{index + 1}</td>
-                <td>{user.email}</td>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
-                <td>
-                  <img
-                    className="rounded-full h-12 w-12"
-                    src={user.avatar}
-                    alt={user.avatar}
-                  />
-                </td>
-                <td>Detail</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <p>Saat ini di page {page}</p>
-      <div className="flex items-center justify-center">
-        <button
-          onClick={() => {
-            setPage(page - 1);
-          }}
-        >
-          Previous
-        </button>
-        <button
-          onClick={() => {
-            setPage(page + 1);
-          }}
-        >
-          Next
-        </button>
-      </div>
+    <div className=" grid grid-cols-3 gap-3 p pt-3">
+      {quran.map((quran, index) => {
+        return (
+          <div className="card">
+          
+            <div className="card__content py-4">
+              <div className="card-title px-5 flex">
+                <h3 className="mr-1 text-l mb-2">{quran.nomor}</h3>
+                <h3>{quran.nama_latin}</h3>
+              </div>
+              <div className="card-body px-5 mt-5 ">
+                <h1 className="text-right"> {quran.nama}</h1>
+              </div>
+              <div className="card-tempat flex justify-end px-5">
+                <p className="mr-1">{quran.tempat_turun}</p>
+                <p>{quran.arti}</p>
+              </div>
+            
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

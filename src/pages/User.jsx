@@ -22,24 +22,24 @@ const User = () => {
     getUsersHandle();
   }, []);
   return (
-    <div className=" grid grid-cols-3 gap-3 p pt-3">
+    <div className=" grid grid-cols-3 gap-2 p pt-3">
       {quran.map((quran, index) => {
         return (
-          <div className="card">
-          
+          <div className="card" key={index}>
             <div className="card__content py-4">
               <div className="card-title px-5 flex">
-                <h3 className="mr-1 text-l mb-2">{quran.nomor}</h3>
+                <h3 className="mr-1 text-l mb-2">{quran.nomor}.</h3>
                 <h3>{quran.nama_latin}</h3>
               </div>
               <div className="card-body px-5 mt-5 ">
                 <h1 className="text-right"> {quran.nama}</h1>
               </div>
               <div className="card-tempat flex justify-end px-5">
-                <p className="mr-1">{quran.tempat_turun}</p>
-                <p>{quran.arti}</p>
+                <p className="mr-5">{quran.tempat_turun}</p>
+                <ul className="list-disc">
+                  <li>{quran.arti}</li>
+                </ul>
               </div>
-            
             </div>
           </div>
         );

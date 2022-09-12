@@ -1,14 +1,17 @@
 import axios from "axios";
 import React from "react";
+import "../styles/styles.css";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const [users, setUsers] = React.useState([]); //state untuk menyimpan data user dari API
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(100);
 
+  const navigate = useNavigate();
   const getUsersHandle = async () => {
     try {
       const response = await axios.get(
-        `https://reqres.in/api/users?page=${page}`
+        `https://belajar-react.smkmadinatulquran.sch.id/api/users/${page}`
       );
       console.log("Response =>", response.data);
       setUsers(response.data.data);
@@ -25,15 +28,24 @@ const User = () => {
   return (
     <div>
       <h1>Tabel User</h1>
-      <table className="table-auto">
+      <button
+        onClick={() => {
+          return navigate("createUser", { replace: true });
+        }}
+        className="m-2"
+      >
+        Tambah User
+      </button>
+      <table className="table-auto w-full">
         <thead>
           <tr className="text-left border">
             <th>No</th>
+            <th>User Name</th>
+            <th>Name</th>
             <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Avatar</th>
-            <th>Detail</th>
+            <th>Jenis Kelamin</th>
+            <th>Di Buat</th>
+            <th>Di Update</th>
           </tr>
         </thead>
         <tbody>
@@ -41,16 +53,12 @@ const User = () => {
             return (
               <tr key={index} className="text-left border">
                 <td>{index + 1}</td>
+                <td>{user.username}</td>
+                <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
-                <td>
-                  <img
-                    className="rounded-full h-12 w-12"
-                    src={user.avatar}
-                    alt={user.avatar}
-                  />
-                </td>
+                <td>{user.jenis_kelamin}</td>
+                <td>{user.stored_at}</td>
+                <td>{user.updated_at}</td>
                 <td>Detail</td>
               </tr>
             );
@@ -58,20 +66,22 @@ const User = () => {
         </tbody>
       </table>
       <p>Saat ini di page {page}</p>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-end m-3">
         <button
           onClick={() => {
             setPage(page - 1);
           }}
+          className="button_top mr-5"
         >
-          Previous
+          <span>Previous</span>
         </button>
         <button
           onClick={() => {
             setPage(page + 1);
           }}
+          className="button_top"
         >
-          Next
+          <span>Next</span>
         </button>
       </div>
     </div>

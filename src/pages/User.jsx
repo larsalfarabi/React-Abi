@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import "../styles/styles.css";
 import { useNavigate } from "react-router-dom";
+import Button from "../komponen/button";
 
 const User = () => {
   const [users, setUsers] = React.useState([]); //state untuk menyimpan data user dari API
@@ -19,6 +20,7 @@ const User = () => {
     } catch (err) {}
   };
 
+
   console.log("User =>", users);
   console.log("page =>", page);
 
@@ -26,19 +28,19 @@ const User = () => {
     getUsersHandle();
   }, [page]);
   return (
-    <div>
+    <div className="px-3 py-2">
       <h1>Tabel User</h1>
       <button
         onClick={() => {
           return navigate("createUser", { replace: true });
         }}
-        className="m-2"
+        className="font-mono font-medium px-4 my-2 "
       >
         Tambah User
       </button>
       <table className="table-auto w-full">
         <thead>
-          <tr className="text-left border">
+          <tr className="text-left ">
             <th>No</th>
             <th>User Name</th>
             <th>Name</th>
@@ -46,6 +48,7 @@ const User = () => {
             <th>Jenis Kelamin</th>
             <th>Di Buat</th>
             <th>Di Update</th>
+            <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -59,19 +62,32 @@ const User = () => {
                 <td>{user.jenis_kelamin}</td>
                 <td>{user.stored_at}</td>
                 <td>{user.updated_at}</td>
-                <td>Detail</td>
+                <div className="flex flex-col mx-2">
+                  <Button
+                    onClick={() => {
+                      return navigate(`/user/update/${user.id}`, {
+                        replace: true,
+                      });
+                    }}
+                    className="text-blue-400 font-mono font-medium px-4 my-1"
+                    title={"Edit"}
+                  />{" "}
+                  <Button
+                    className="text-red-400 font-mono font-medium px-4 my-1"
+                    title={"Delete"}
+                  />{" "}
+                </div>
               </tr>
             );
           })}
         </tbody>
       </table>
       <p>Saat ini di page {page}</p>
-      <div className="flex items-center justify-end m-3">
+      <div className="grid grid-cols-7 col-span-2 my-5 gap-5">
         <button
           onClick={() => {
             setPage(page - 1);
           }}
-          className="button_top mr-5"
         >
           <span>Previous</span>
         </button>
@@ -79,7 +95,6 @@ const User = () => {
           onClick={() => {
             setPage(page + 1);
           }}
-          className="button_top"
         >
           <span>Next</span>
         </button>

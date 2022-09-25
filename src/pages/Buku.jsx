@@ -4,22 +4,34 @@ import "../styles/styles.css";
 import { useNavigate } from "react-router-dom";
 import Button from "../komponen/button";
 
-const User = () => {
+const Buku = () => {
   const [users, setUsers] = React.useState([]); //state untuk menyimpan data user dari API
   const [page, setPage] = React.useState(100);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const navigate = useNavigate();
   const getUsersHandle = async () => {
     try {
       const response = await axios.get(
-        `https://belajar-react.smkmadinatulquran.sch.id/api/users/${page}`
+        `https://api-react-2.herokuapp.com/api/perpustakaan?kode=99999`
       );
       console.log("Response =>", response.data);
-      setUsers(response.data.data);
+      setUsers(response.data.data.data);
       setPage(response.data.page);
     } catch (err) {}
   };
+  const getUserDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        ` https://api-react-2.herokuapp.com/api/perpustakaan/${id}?kode=99999`
+      );
 
+      getUsersHandle();
+      isLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   console.log("User =>", users);
   console.log("page =>", page);
@@ -32,7 +44,7 @@ const User = () => {
       <h1>Tabel User</h1>
       <button
         onClick={() => {
-          return navigate("createUser", { replace: true });
+          return navigate("tambah", { replace: true });
         }}
         className="font-mono font-medium px-4 my-2 "
       >
@@ -42,13 +54,15 @@ const User = () => {
         <thead>
           <tr className="text-left ">
             <th>No</th>
-            <th>User Name</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Jenis Kelamin</th>
+            <th>Kode Penulis</th>
+            <th>Judul Buku</th>
+            <th>Nama Pengarang</th>
+            <th>Nama Penerbit Buku</th>
+            <th>Tahun Penerbit</th>
+            <th>Ketebalan Buku</th>
+            <th>Sinopsis</th>
             <th>Di Buat</th>
             <th>Di Update</th>
-            <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -56,16 +70,19 @@ const User = () => {
             return (
               <tr key={index} className="text-left border">
                 <td>{index + 1}</td>
-                <td>{user.username}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.jenis_kelamin}</td>
-                <td>{user.stored_at}</td>
+                <td>{user.kode_penulis}</td>
+                <td>{user.judul_buku}</td>
+                <td>{user.nama_pengarang}</td>
+                <td>{user.nama_penerbit_buku}</td>
+                <td>{user.tahun_terbit_buku}</td>
+                <td>{user.ketebalan_buku}</td>
+                <td>{user.sinopsis}</td>
+                <td>{user.created_at}</td>
                 <td>{user.updated_at}</td>
                 <div className="flex flex-col mx-2">
                   <Button
                     onClick={() => {
-                      return navigate(`/user/update/${user.id}`, {
+                      return navigate(`/admin/buku/${user.id}/update`, {
                         replace: true,
                       });
                     }}
@@ -73,8 +90,20 @@ const User = () => {
                     title={"Edit"}
                   />{" "}
                   <Button
+                    onClick={() => {
+                      return navigate(`/admin/buku/${user.id}/view`, {
+                        replace: true,
+                      });
+                    }}
+                    className="text-green-400 font-mono font-medium px-4 my-1"
+                    title={"Detail"}
+                  />{" "}
+                  <Button
                     className="text-red-400 font-mono font-medium px-4 my-1"
-                    title={"Delete"}
+                    onClick={() => {
+                      getUserDelete(user.id);
+                    }}
+                    title={isLoading ? "Deleting" : "Delete"}
                   />{" "}
                 </div>
               </tr>
@@ -103,4 +132,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Buku;

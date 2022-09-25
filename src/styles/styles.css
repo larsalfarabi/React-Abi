@@ -3,8 +3,9 @@
   padding: 5px 10px;
   border: 1px solid red;
 } */
-*{
+* {
   font-family: monospace;
+
 }
 button {
   color: #090909;
@@ -38,3 +39,4 @@ button:active {
   outline-color: white;
   color: black;
 }
+

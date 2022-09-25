@@ -1,9 +1,15 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import CreateUser from "./pages/CreateUser";
-import DetailUser from "./pages/DetailUser";
-import User from "./pages/User";
-import UpdateUser from "./pages/UpdateUser";
+import CreateBuku from "./pages/CreateBuku";
+import DetailBuku from "./pages/DetailBuku";
+import Buku from "./pages/Buku";
+import UpdateBuku from "./pages/UpdateUser";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
+import Admin from "./pages/Admin";
+import NotFound from "./pages/NotFound";
+
 // import Input from "./component/Input";
 // import TextArea from "./component/TextArea";
 // import Button from "./component/Button";
@@ -14,11 +20,17 @@ export default function App() {
     <div>
       {/* <h1 className="bg-red-500"> branch API</h1> */}
       <Routes>
-        <Route path="/user" element={<User />} />
-        <Route path="/user/createUser" element={<CreateUser />} />
-        <Route path="/user/:id/:detail" element={<DetailUser />} />
-        <Route path="/user/update/:id" element={<UpdateUser />} />
-        <Route path="*" element={<Navigate to="/user" replace={true} />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/admin" element={<Admin />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="buku" element={<Buku />} />
+          <Route path="about" element={<About />} />
+        </Route>
+        <Route path="/admin/buku/tambah" element={<CreateBuku />} />
+        <Route path="/admin/buku/:id/update" element={<UpdateBuku />} />
+        <Route path="/admin/buku/:id/view" element={<DetailBuku />} />
+        <Route path="notFound" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="notFound" replace={true} />} />
       </Routes>
     </div>
   );

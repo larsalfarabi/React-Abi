@@ -20,7 +20,7 @@ export default function App() {
     <div>
       {/* <h1 className="bg-red-500"> branch API</h1> */}
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="/admin" element={<Admin />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="buku" element={<Buku />} />

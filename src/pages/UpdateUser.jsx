@@ -3,7 +3,7 @@ import { Input, TextArea } from "../komponen/input";
 import Button from "../komponen/button";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import swal from "sweetalert";
+// import swal from "sweetalert";
 
 const UpdateBuku = () => {
   let { id } = useParams();
@@ -69,7 +69,7 @@ const UpdateBuku = () => {
       setIsReset(false);
       setUser(() => {
         return {
-          kode_penulis: "10102",
+          kode_penulis: "99999",
           judul_buku: dataUser.judul_buku,
           nama_pengarang: dataUser.nama_pengarang,
           nama_penerbit_buku: dataUser.nama_penerbit_buku,
@@ -182,7 +182,7 @@ const UpdateBuku = () => {
         });
       }
       if (e.target.name === "") {
-        swal("Form ada yang belum diisi", "You clicked the button!", "error");
+        // swal("Form ada yang belum diisi", "You clicked the button!", "error");
       }
 
       return;
@@ -195,7 +195,7 @@ const UpdateBuku = () => {
         user
       );
       setIsLoading(false);
-      swal("Berhasil Memperbarui", "You clicked the button!", "success");
+      // swal("Berhasil Memperbarui", "You clicked the button!", "success");
       return navigate("/admin/buku", { replace: true });
     } catch (err) {
       //kondisi ketika error

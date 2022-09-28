@@ -3,7 +3,7 @@ import { Input, TextArea } from "../komponen/input";
 import Button from "../komponen/button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+// import swal from "sweetalert";
 
 const CreateBuku = () => {
   const navigate = useNavigate();
@@ -48,11 +48,33 @@ const CreateBuku = () => {
     });
 
     handleBlur(e);
+    errorSin("");
+  };
+
+  const handleReset = (e) => {
+    e.preventDefault();
+    setUser(() => {
+      return {
+        judul_buku: "",
+        nama_pengarang: "",
+        nama_penerbit_buku: "",
+        ketebalan_buku: "",
+        tahun_terbit_buku: "",
+        sinopsis: "",
+        kode_penulis: "99999",
+      };
+    });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log(user);
+    if (user.sinopsis.length < 10) {
+      setErrorSin("Sinopsis harus lebih dari 30 kata");
+    } else {
+      setErrorSin("");
+    }
+
     if (
       user.judul_buku === "" ||
       user.ketebalan_buku === "" ||
@@ -112,22 +134,8 @@ const CreateBuku = () => {
           };
         });
       }
-      if (user.sinopsis.length < 10) {
-        setErrorSin("Sinopsis harus lebih dari 30 kata");
-        setError((error) => {
-          return {
-            ...error,
-            sinopsis: true,
-          };
-        });
-      } else {
-        setErrorSin("");
-      }
-      if (
-        user.tahun_terbit_buku < 2020 ||
-        user.tahun_terbit_buku > 2022 ||
-        user.tahun_terbit_buku === ""
-      ) {
+
+      if (user.tahun_terbit_buku === "") {
         setError((error) => {
           return {
             ...error,
@@ -135,8 +143,9 @@ const CreateBuku = () => {
           };
         });
       }
+
       if (e.target.name === "") {
-        swal("Form ada yang belum diisi", "You clicked the button!", "error");
+        // swal("Form ada yang belum diisi", "You clicked the button!", "error");
       }
 
       return;
@@ -150,7 +159,7 @@ const CreateBuku = () => {
         user
       );
       setIsLoading(false);
-      swal("Berhasil Menyimpan", "You clicked the button!", "success");
+      // swal("Berhasil Menyimpan", "You clicked the button!", "success");
       return navigate("/admin/buku", { replace: true });
     } catch (err) {
       //kondisi ketika error
@@ -226,8 +235,15 @@ const CreateBuku = () => {
             onBlur={handleBlur}
             type="number"
           />
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-3 gap-5">
             <Button title={isLoading ? "sedang menyimpan" : "simpan"} />
+            <Button
+              styling={
+                "hover:text-white hover hover:border-[#645CAA] hover:bg-[#645CAA]"
+              }
+              title={"Reset"}
+              onClick={handleReset}
+            />
             <Button
               onClick={() => {
                 return navigate("/admin/buku", { replace: true });

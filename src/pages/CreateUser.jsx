@@ -4,6 +4,7 @@ import Button from "../komponen/button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Select from "../komponen/select";
+import Swal from "sweetalert2"; 
 
 const CreateUser = () => {
   const navigate = useNavigate();
@@ -31,15 +32,34 @@ const CreateUser = () => {
     try {
       //kondisi ketika berhasil
       setIsLoading(true);
-      // const response = await axios.post(
-      //   "https://belajar-react.smkmadinatulquran.sch.id/api/users/create",
-      //   user
-      // );
-      // setIsLoading(false);
+      const response = await axios.post(
+        "https://belajar-react.smkmadinatulquran.sch.id/api/users/create",
+        user
+      );
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully",
+      });
+      
       return navigate("/user", { replace: true });
     } catch (err) {
       //kondisi ketika error
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (

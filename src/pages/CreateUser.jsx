@@ -4,11 +4,13 @@ import Button from "../komponen/button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Select from "../komponen/select";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 
 const CreateUser = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = React.useState(false);
+  let [errorMessage, setErrorMessage] = React.useState("");
+  const [error, setError] = React.useState({});
   const [user, setUser] = React.useState({
     username: "",
     name: "",
@@ -17,7 +19,6 @@ const CreateUser = () => {
     password: "",
     password_confirmation: "",
   });
-
   const handleChange = (e) => {
     setUser((user) => {
       return {
@@ -53,11 +54,14 @@ const CreateUser = () => {
         icon: "success",
         title: "Signed in successfully",
       });
-      
       return navigate("/user", { replace: true });
     } catch (err) {
       //kondisi ketika error
       console.log(err);
+      setErrorMessage("periksa inputan kembali ");
+      alert("terjadi error backend");
+      setError(err?.response?.data?.errors);
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -66,6 +70,9 @@ const CreateUser = () => {
     <div className="flex flex-col justify-center items-center bg-white  h-[37rem] ">
       <div className=" w-[25rem]  flex flex-col items-center bg-[#e8e8e8] rounded-xl py-3 shadow-xl">
         <h1 className="text-xl my-3 font-bold font-mono">Register</h1>
+        <p className="text-red-200 italic bg-red-500 px-2 py-1">
+          {errorMessage}
+        </p>
         <form action="" onSubmit={handleSubmit}>
           <Input
             value={user.username}
@@ -73,12 +80,14 @@ const CreateUser = () => {
             onChange={handleChange}
             name={"username"}
           />
+          <p className="text-red-500 italic">{error?.username?.[0]}</p>
           <Input
             value={user.name}
             placeHolder={"Name"}
             onChange={handleChange}
             name={"name"}
           />
+          <p className="text-red-500 italic">{error?.name?.[0]}</p>
           <Input
             value={user.email}
             placeHolder={"Email"}
@@ -86,6 +95,7 @@ const CreateUser = () => {
             name={"email"}
             type="email"
           />
+          <p className="text-red-500 italic">{error?.email?.[0]}</p>
           <Select
             className="input mx-5 my-2"
             value={user.jenis_kelamin}
@@ -97,6 +107,7 @@ const CreateUser = () => {
             <option type="male">laki-Laki</option>
             <option type="female">Perempuan</option>
           </Select>
+
           <Input
             value={user.password}
             placeHolder={"Password"}
@@ -104,6 +115,7 @@ const CreateUser = () => {
             name={"password"}
             type="password"
           />
+          <p className="text-red-500 italic">{error?.password?.[0]}</p>
           <Input
             value={user.password_confirmation}
             placeHolder={"Confirm Password"}

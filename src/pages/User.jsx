@@ -10,6 +10,7 @@ const User = () => {
   const [users, setUsers] = React.useState([]); //state untuk menyimpan data user dari API
   const [page, setPage] = React.useState(100);
   const [isFetchUser, setIsFetchUser] = React.useState(false);
+
   const navigate = useNavigate();
   const getUsersHandle = async () => {
     try {
@@ -19,7 +20,7 @@ const User = () => {
       );
       console.log("Response =>", response.data);
       setUsers(response.data.data);
-      setPage(response.data.page);
+      // setPage(response.data.page);
     } catch (err) {
     } finally {
       setIsFetchUser(false);
@@ -87,8 +88,14 @@ const User = () => {
         <tbody>
           {isFetchUser ? (
             <tr>
-              <td >
-                <Skeleton width={1000} duration={1.5} count={5} />
+              <td>
+                <Skeleton
+                  width={1000}
+                  baseColor="#dc2e2e"
+                  highlightColor="#ff5c5c"
+                  duration={1.5}
+                  count={5}
+                />
               </td>
             </tr>
           ) : (

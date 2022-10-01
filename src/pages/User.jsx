@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../komponen/button";
 import Swal from "sweetalert2";
 import Skeleton from "react-loading-skeleton";
+import { getAllUser } from "../API/user";
 
 const User = () => {
   const [users, setUsers] = React.useState([]); //state untuk menyimpan data user dari API
@@ -15,9 +16,7 @@ const User = () => {
   const getUsersHandle = async () => {
     try {
       setIsFetchUser(true);
-      const response = await axios.get(
-        `https://belajar-react.smkmadinatulquran.sch.id/api/users/${page}`
-      );
+      const response = await getAllUser(page);
       console.log("Response =>", response.data);
       setUsers(response.data.data);
       // setPage(response.data.page);

@@ -4,6 +4,7 @@ import Button from "../komponen/button";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Select from "../komponen/select";
+import { detailUser, updateUser } from "../API/user";
 
 const UpdateUser = () => {
   let { id } = useParams();
@@ -33,19 +34,17 @@ const UpdateUser = () => {
 
   const getDetailUser = async () => {
     try {
-      const response = await axios.get(
-        `https://belajar-react.smkmadinatulquran.sch.id/api/users/detail/${id}`
-      );
-        console.log("response =>", response.data);
-        const dataUser = response.data.data;
-        setUser(() => {
-            return {
-              username: dataUser.username,
-              name: dataUser.name,
-              email: dataUser.email,
-              jenis_kelamin: dataUser.jenis_kelamin,
-            };
-        })
+      const response = await detailUser(id);
+      console.log("response =>", response.data.data);
+      const dataUser = response.data.data;
+      setUser(() => {
+        return {
+          username: dataUser.username,
+          name: dataUser.name,
+          email: dataUser.email,
+          jenis_kelamin: dataUser.jenis_kelamin,
+        };
+      });
     } catch (err) {}
   };
 
@@ -55,11 +54,8 @@ const UpdateUser = () => {
     try {
       //   kondisi ketika berhasil
       setIsLoading(true);
-          const response = await axios.put(
-            `https://belajar-react.smkmadinatulquran.sch.id/api/users/update/${id}`,
-            user
-          );
-        setIsLoading(false);
+      const response = await updateUser(id, user);
+      setIsLoading(false);
       return navigate("/user", { replace: true });
     } catch (err) {
       //kondisi ketika error

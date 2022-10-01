@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Select from "../komponen/select";
 import Swal from "sweetalert2";
+import { createUser } from "../API/user";
 
 const CreateUser = () => {
   const navigate = useNavigate();
@@ -33,11 +34,7 @@ const CreateUser = () => {
     try {
       //kondisi ketika berhasil
       setIsLoading(true);
-      const response = await axios.post(
-        "https://belajar-react.smkmadinatulquran.sch.id/api/users/create",
-        user
-      );
-
+      const response = await createUser(user);
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",

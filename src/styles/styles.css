@@ -1,5 +1,19 @@
-.input {
-    background-color: 'red';
-    padding: 5px 10px;
-    border: 1px solid red;
+label {
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="text"] {
+  display: block;
+  width: 400px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }

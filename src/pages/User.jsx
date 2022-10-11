@@ -6,6 +6,7 @@ import Button from "../komponen/button";
 import Swal from "sweetalert2";
 import Skeleton from "react-loading-skeleton";
 import { getAllUser } from "../API/user";
+import Cookies from "js-cookie";
 
 const User = () => {
   const [users, setUsers] = React.useState([]); //state untuk menyimpan data user dari API
@@ -63,14 +64,22 @@ const User = () => {
   return (
     <div className="px-3 py-2">
       <h1>Tabel User</h1>
-      <button
-        onClick={() => {
-          return navigate("createUser", { replace: true });
-        }}
-        className="font-mono font-medium px-4 my-2 "
-      >
-        Tambah User
-      </button>
+      <div className="grid grid-cols-8 gap-5">
+        <Button
+          onClick={() => {
+            return navigate("createUser", { replace: true });
+          }}
+          title={"Tambah User"}
+        />
+        
+        <Button
+          title={"Logout"}
+          onClick={() => {
+            Cookies.remove("myapps_token");
+            navigate("/login", { replace: true });
+          }}
+        />
+      </div>
       <table className="table-auto w-full">
         <thead>
           <tr className="text-left ">

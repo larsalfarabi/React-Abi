@@ -36,7 +36,7 @@ export default function Button({ title, color = "#1a73e8", disabled,...props }) 
         //   backgroundColor: color,
         //   opacity: disabled ? 0.5 : 1
         // }}
-        className="font-mono font-medium px-4 my-1 "
+        className="font-mono font-medium px-6 my-3 hover:bg-[grey] hover:text-white"
         {...props}
       >
         {title}

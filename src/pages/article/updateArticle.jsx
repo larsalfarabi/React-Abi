@@ -2,6 +2,7 @@ import React from "react";
 import Input from "../../komponen/input";
 import Button from "../../komponen/button";
 import { useNavigate, useParams } from "react-router-dom";
+
 import Swal from "sweetalert2";
 import { createArticle, detailArticle, updateArticle } from "../../API/article";
 import Hamburger from "hamburger-react";
@@ -95,19 +96,16 @@ const UpdateArticle = () => {
   }, []);
 
   return (
-    <div className="bg-black">
-      {" "}
+    <div>
       <aside className="fixed top-[88px] ">
-        <div className="absolute left-full top-3 w-12 h-12 bg-[#282828] rounded-tr-xl rounded-br-xl cursor-pointer hover:bg-black hover:opacity-70">
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-tr-xl rounded-br-xl">
-            <Hamburger
-              toggled={isOpen}
-              toggle={setOpen}
-              color="white"
-              size={20}
-              duration={0.5}
-            />
-          </div>
+        <div className="absolute left-full top-3 w-12 h-12 bg-[#282828] rounded-tr-xl rounded-br-xl cursor-pointer hover:bg-[#282828] hover:bg-opacity-90 hover:transition">
+          <Hamburger
+            toggled={isOpen}
+            toggle={setOpen}
+            color="white"
+            size={20}
+            duration={0.5}
+          />
         </div>
       </aside>
       <div className="flex flex-col justify-center items-center bg-white  h-[37rem] ">

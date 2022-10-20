@@ -46,7 +46,7 @@ export default function App() {
           }
         />
         <Route
-          path="/artikel/update/:id/:slug"
+          path="/artikel/update/:slug"
           element={
             <ProtectedRoute>
               <UpdateArticle />
@@ -78,7 +78,7 @@ export default function App() {
           }
         />
         <Route
-          path="/user/update/:id"
+          path="/user/update/:slug"
           element={
             <ProtectedRoute>
               <UpdateUser />

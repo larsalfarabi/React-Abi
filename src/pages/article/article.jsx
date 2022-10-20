@@ -87,7 +87,7 @@ export default function Article() {
                     <Button
                       onClick={() => {
                         return navigate(
-                          `/artikel/update/${article?.id}/${article?.slug}`
+                          `/artikel/update/${article?.slug}`
                         );
                       }}
                       className="text-blue-400"

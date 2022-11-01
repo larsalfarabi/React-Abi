@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/styles.css"
+import "../styles/styles.css";
 
 // export default function Button({
 //   title,
@@ -27,16 +27,16 @@ import "../styles/styles.css"
 //   );
 // }
 
-export default function Button({ title, color = "#1a73e8", disabled,...props }) {
+export default function Button({ title, color, disabled, ...props }) {
   return (
     <React.Fragment>
       <button
         disabled={disabled}
-        // style={{
-        //   backgroundColor: color,
-        //   opacity: disabled ? 0.5 : 1
-        // }}
-        className="font-mono font-medium px-6 my-3 hover:bg-[grey] hover:text-white"
+        style={{
+          color: color,
+          opacity: disabled ? 0.5 : 1,
+        }}
+        className="button2"
         {...props}
       >
         {title}

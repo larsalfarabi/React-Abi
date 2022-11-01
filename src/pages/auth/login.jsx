@@ -62,7 +62,7 @@ const Login = () => {
             type="password"
             onChange={handleChange}
           />
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-5 mt-2">
             <Button title={"login"} />
             <Button
               // onClick={() => {

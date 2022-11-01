@@ -3,13 +3,22 @@ import Skeleton from "react-loading-skeleton";
 import { deleteArticle, getArticle } from "../../API/article";
 import { useNavigate } from "react-router-dom";
 import Button from "../../komponen/button";
+import { useDispatch, useSelector } from "react-redux";
+import { increment, decrement } from "../redux/action/countAction";
 
 export default function Article() {
   const navigate = useNavigate();
   const [listArticle, setListArticle] = React.useState([]);
   const [isFetchArticle, setIsFetchArticle] = React.useState(false);
+  const [page, setPage] = React.useState(100);
+  const store = useSelector((state) => state);
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
+
   const getListArticleHandle = async () => {
+    
     try {
+      
       setIsFetchArticle(true);
       const response = await getArticle();
       console.log(response.data);
@@ -27,12 +36,55 @@ export default function Article() {
   }, []);
   return (
     <div className="border-collapse p-3">
-      <Button
-        title={"Tambah Artikel"}
-        onClick={() => {
-          return navigate("/article/createArticle", { replace: true });
-        }}
-      />
+      <div className="grid grid-cols-7 gap-5 ">
+        <Button
+          title={"Tambah Artikel"}
+          onClick={() => {
+            return navigate("/article/createArticle", { replace: true });
+          }}
+        />
+        <div className="flex flex-col">
+          status: {count.status}
+          value: {count.value}
+        </div>
+
+        <Button
+          onClick={() => {
+            dispatch(decrement());
+          }}
+          title={"Previous"}
+        />
+
+        <Button
+          onClick={() => {
+            dispatch(increment());
+          }}
+          title={"Next"}
+        />
+
+        <Button
+          title={"green"}
+          color="green"
+          onClick={() => {
+            dispatch({ type: "change", color: "#32a862" });
+          }}
+        />
+
+        <Button
+          title={"yellow"}
+          color="yellow"
+          onClick={() => {
+            dispatch({ type: "change", color: "#e9f542" });
+          }}
+        />
+        <Button
+          title={"kembali"}
+          color="#"
+          onClick={() => {
+            dispatch({ type: "return" });
+          }}
+        />
+      </div>
       <table className="table-auto w-full mt-2 ">
         <thead>
           <tr className="text-left border">
@@ -81,17 +133,17 @@ export default function Article() {
                       onClick={() => {
                         return navigate(`/artikel/${article?.slug}`);
                       }}
-                      className="text-blue-400"
+                      className="button2"
                       title={"detail"}
+                      color="blue"
                     />
                     <Button
                       onClick={() => {
-                        return navigate(
-                          `/artikel/update/${article?.slug}`
-                        );
+                        return navigate(`/artikel/update/${article?.slug}`);
                       }}
-                      className="text-blue-400"
+                      className="button2"
                       title={"edit"}
+                      color="blue"
                     />
                     <Button
                       onClick={async (e) => {
@@ -107,7 +159,8 @@ export default function Article() {
                         getListArticleHandle();
                       }}
                       title={"delete"}
-                      className="text-red-400"
+                      color="red"
+                      className="text-red-400 button2"
                     />
                   </div>
                 </tr>

@@ -3,18 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "@mui/material": "^5.10.6",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.12",
+    "@mui/styled-engine-sc": "^5.10.6",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.6.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "styled-components": "^5.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,6 +46,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.1.8",
+    "web-vitals": "^3.0.4"
   }
 }

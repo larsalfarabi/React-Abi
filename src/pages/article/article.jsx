@@ -13,12 +13,11 @@ export default function Article() {
   const [page, setPage] = React.useState(100);
   const store = useSelector((state) => state);
   const count = useSelector((state) => state.count);
+  const nama = useSelector((state) => state.authProcess);
   const dispatch = useDispatch();
 
   const getListArticleHandle = async () => {
-    
     try {
-      
       setIsFetchArticle(true);
       const response = await getArticle();
       console.log(response.data);
@@ -35,7 +34,12 @@ export default function Article() {
     getListArticleHandle();
   }, []);
   return (
-    <div className="border-collapse p-3">
+    <div className="p-3">
+      
+        {" "}
+        <p className="mr-2">name: {nama.name}</p>
+        <p>email: {nama.email}</p>
+     
       <div className="grid grid-cols-7 gap-5 ">
         <Button
           title={"Tambah Artikel"}

@@ -4,7 +4,11 @@ import Button from "../../komponen/button";
 import Cookies from "js-cookie";
 import Input from "../../komponen/input";
 import { loginProses } from "../../API/auth";
+import { authLogin } from "../redux/action/authAction";
+import { useDispatch } from "react-redux";
+
 const Login = () => {
+  let dispatch = useDispatch();
   const navigate = useNavigate();
   const [payload, setPayload] = React.useState({
     email: "",
@@ -19,17 +23,21 @@ const Login = () => {
       };
     });
   };
+  const [messageError, setMessageError] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       setIsLoading(true);
-      const response = await loginProses(payload);
-      const data = response.data;
-      Cookies.set("myapps_token", data?.token);
-
-      return navigate("/article", { replace: true });
+      const response = await dispatch(authLogin(payload));
+      console.log("response", response);
+      // return navigate("/article", { replace: true });
+      if (response?.status === "Success") {
+        return navigate("/article", { replace: true });
+      } else {
+        setMessageError(response?.response?.data?.message);
+      }
     } catch (err) {
       console.log("error =>", err);
     } finally {
@@ -45,7 +53,9 @@ const Login = () => {
   };
   return (
     <div className="mt-5 flex flex-col justify-center items-center ">
+      <p>{ }</p>
       <h1>login page</h1>
+      <p className="text-red-500">{messageError}</p>
       <div className="bg-gray-300  relative  before:absolute before:z-[-1] before:top-2 before:left-2 before:w-full before:h-full before:bg-gray-400 before:rounded-md w-[25rem] px-5 py-5 rounded-lg mt-5 ">
         <form action="" onSubmit={handleSubmit}>
           <Input
@@ -63,7 +73,7 @@ const Login = () => {
             onChange={handleChange}
           />
           <div className="grid grid-cols-2 gap-5 mt-2">
-            <Button title={"login"} />
+            <Button title={isLoading ? "Proses" : "login"} />
             <Button
               // onClick={() => {
               //   Cookies.set("myapps_token");

@@ -10,7 +10,7 @@ export const authProcess = (state = intialState, action) => {
       ...state,
       name: action.name,
       email: action.email,
-      isAuth: true,
+      isAuth: action.isAuth,
     };
   }
 

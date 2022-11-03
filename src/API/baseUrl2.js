@@ -9,4 +9,5 @@ const clientLogin = axios.create({
   },
 });
 
-export default clientLogin;
+
+export default clientLogin ;

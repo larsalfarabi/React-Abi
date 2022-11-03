@@ -124,7 +124,7 @@ export default function Article() {
                   <td>
                     <img src={article?.thumbnail} className="w-10 h-10" />
                   </td>
-                  <div className="overflow-y-auto h-[50px] w-[10rem]">
+                  <div className="overflow-y-auto h-[5rem] w-[10rem]">
                     <td>{article?.artikel}</td>
                   </div>
 

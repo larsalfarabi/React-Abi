@@ -7,6 +7,7 @@ import CreateArticle from "./pages/article/createArticle";
 import DetailArticle from "./pages/article/detailArticle";
 import UpdateArticle from "./pages/article/updateArticle";
 import { useSelector } from "react-redux";
+import Register from "./pages/auth/register";
 // import Input from "./component/Input";
 // import TextArea from "./component/TextArea";
 // import Button from "./component/Button";
@@ -17,7 +18,7 @@ export default function App() {
   console.log(color);
 
   return (
-    <div>
+    <div className="">
       <h1
         style={{
           backgroundColor: color.color,
@@ -28,6 +29,7 @@ export default function App() {
       </h1>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/article"
           element={

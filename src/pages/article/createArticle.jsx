@@ -127,7 +127,7 @@ const CreateArticle = () => {
             className="w-20"
           />
 
-          <div className="grid grid-cols-2 gap-5 ">
+          <div className="grid grid-cols-2 gap-5 mt-2">
             <Button title={isLoading ? "sedang menyimpan" : "simpan"} />
             <Button
               onClick={() => {

@@ -82,11 +82,11 @@
   overflow: hidden;
   z-index: 1;
   color: #090909;
-  padding: 0.7em 1em;
+  padding: 0.7em 0.5em;
   font-size: 13px;
   border-radius: 0.5em;
   background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  border: 1px solid #666;
   box-shadow: 1px 2px 0.5px 1px #666;
 }
 
@@ -143,7 +143,7 @@
 }
 
 .line-wobble {
-  --uib-size: 80px;
+  --uib-size: 150px;
   --uib-speed: 1.55s;
   --uib-color: black;
   --uib-line-weight: 5px;
@@ -187,5 +187,54 @@
 
   50% {
     transform: translateX(90%);
+  }
+}
+
+.loading {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.d1,
+.d2 {
+  border: 7px solid #6c757d;
+  border-radius: 50px;
+}
+
+.loading .d1 {
+  width: 95px;
+  height: 95px;
+  position: absolute;
+  border-left-color: transparent;
+  animation: load161 1s linear infinite;
+}
+
+.loading .d2 {
+  width: 80px;
+  height: 80px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  margin: 7.5px;
+  animation: load2812 1.5s linear infinite;
+}
+
+@keyframes load161 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load2812 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-360deg);
   }
 }

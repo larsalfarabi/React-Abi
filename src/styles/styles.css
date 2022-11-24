@@ -4,7 +4,6 @@
   border: 1px solid red;
 }
 .image {
-  opacity: calc(60%);
   background-image: url("https://englishlive.ef.com/blog/wp-content/uploads/sites/2/2015/05/fluency-in-5-easy-steps.jpg");
   width: 40%;
   height: 50%;

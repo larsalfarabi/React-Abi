@@ -1,11 +1,9 @@
 import React from "react";
-import Input from "../component/Input";
-import Button from "../component/Button";
-import Logo from "../asset/icon/Planty's Logo.svg";
-import Show from "../asset/icon/Show.svg";
-import resetPassword from "../asset/image/Reset password.png";
+import Button from "../../component/Button";
+import Logo from "../../asset/icon/Planty's Logo.svg";
+import resetPassword from "../../asset/image/Reset password.png";
 import { useNavigate } from "react-router-dom";
-import InputPassword from "../component/Input Password";
+import InputPassword from "../../component/Input Password";
 const ResetPassword = () => {
   const navigate = useNavigate();
   return (

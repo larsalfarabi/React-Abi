@@ -1,9 +1,14 @@
-import axios from "./baseUrl";
+import clientLogin, {syncToken} from "./baseUrl";
+// import axios from "./baseUrl";
 
-export async function register() {
-    axios.post('/register')
-    
+export async function loginProses(payload) {
+  return clientLogin.post(`/login`, payload)
 }
-export async function login() {
-    
+export async function registerProses(payload) {
+  return clientLogin.post(`/register`, payload);
+}
+
+export function authMeProcess() {
+  syncToken();
+  return clientLogin.get("/authme");
 }

@@ -10,7 +10,7 @@ const InputPassword = ({ ...props }) => {
       <img
         src={changeIcon ? Show : Hide}
         alt=""
-        className="icon"
+        className="icon cursor-pointer"
         onClick={() => {
           setChangePassword(changeIcon);
         }}

@@ -21,13 +21,11 @@
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 14px;
-
   color: #000;
   /* transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
-.input:focus,
-input:valid {
+.input:focus {
   outline: none;
   border: 1.5px solid #637a30;
   padding: 0px 18.5px;

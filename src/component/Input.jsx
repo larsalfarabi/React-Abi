@@ -5,7 +5,7 @@ const Input = ({ label, isError, textError, icon, ...props }) => {
   return (
     <div className="input-group px-3.5">
       <img src={icon} alt="" className="icon" />
-      <input {...props} required autoComplete="off" className="input" />
+      <input {...props} className="input" />
     </div>
   );
 };

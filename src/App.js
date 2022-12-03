@@ -1,10 +1,13 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import ForgotPassword from "./page/ForgotPassword";
-import Home from "./page/Home";
-import Login from "./page/Login";
-import Register from "./page/Register";
-import ResetPassword from "./page/ResetPassword";
+import {
+  ForgotPassword,
+  Home,
+  Login,
+  Register,
+  ResetPassword,
+} from "./page/auth";
+import ProtectRoutes from "./routers/ProtectRoutes";
 
 export default function App() {
   return (
@@ -14,7 +17,14 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route path="home" element={<Home />} />
+        <Route
+          path="home"
+          element={
+            <ProtectRoutes>
+              <Home />
+            </ProtectRoutes>
+          }
+        />
         <Route path="*" element={<Navigate to={"/login"} />} />
       </Routes>
     </div>

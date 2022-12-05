@@ -16,16 +16,16 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/resetPassword" element={<ResetPassword />} />
+        <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
         <Route
-          path="home"
+          path="/home"
           element={
             <ProtectRoutes>
               <Home />
             </ProtectRoutes>
           }
         />
-        <Route path="*" element={<Navigate to={"/login"} />} />
+        <Route path="*" element={<Navigate to={"/home"} />} />
       </Routes>
     </div>
   );

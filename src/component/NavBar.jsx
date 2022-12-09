@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from "../asset/image/Group.svg";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
@@ -9,22 +9,24 @@ function classNames(...classes) {
 }
 const NavBar = () => {
   return (
-    <div className="flex justify-between px-2 py-1">
-      <div>Logo</div>
+    <div className="flex justify-between items-center py-2 px-16 relative bg-black">
+      <div className="text-white">
+        <img src={logo} alt="" className="w-20" />
+      </div>
 
       <div className="">
         <ul className="flex space-x-2">
           <li>
             <a
               href="#home"
-              className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+              className="inline-flex w-full justify-center rounded-md  px-4 py-2 text-sm font-medium text-[#f0f6fc] shadow-sm "
             >
               Home
             </a>
           </li>
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+              <Menu.Button className="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-[#f0f6fc] shadow-sm ">
                 Our Programs
                 <ChevronDownIcon
                   className="-mr-1 ml-2 h-5 w-5"
@@ -96,7 +98,7 @@ const NavBar = () => {
           <li>
             <a
               href="#blog"
-              className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+              className="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-[#f0f6fc] shadow-sm "
             >
               {" "}
               Blog
@@ -104,7 +106,7 @@ const NavBar = () => {
           </li>
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+              <Menu.Button className="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-[#f0f6fc] shadow-sm ">
                 About Us
                 <ChevronDownIcon
                   className="-mr-1 ml-2 h-5 w-5"

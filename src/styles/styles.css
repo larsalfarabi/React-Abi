@@ -1,11 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Poppins:ital,wght@0,400;0,600;0,700;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+}
 .input {
   background-color: "red";
   padding: 5px 10px;
   border: 1px solid red;
 }
 .image {
-  background-image: url("https://englishlive.ef.com/blog/wp-content/uploads/sites/2/2015/05/fluency-in-5-easy-steps.jpg");
-  width: 40%;
-  height: 50%;
+  background-image: url("https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png");
+  width: 100%;
+  height: 100vh;
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.image:after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.85);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+}
+.p {
+  font-family: "Pacifico", cursive;
+}
+.hero__scroll {
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  left: 0;
+  right: 0;
+  text-transform: uppercase;
+  color: #0dcaf0;
+}
+
+.beban a {
+  text-decoration: none;
+}
+
+.hero__scroll .chevron {
+  margin-top: 20px;
+  display: block;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse 2s infinite;
+  color: #0dcaf0;
+}
+.judul {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+.isi {
+  font-family: "Roboto", sans-serif;
+  /* text-align: justify; */
+}
+.font {
+  font-family: "Montserrat", sans-serif;
+}
+button {
+  /* Variables */
+  --button_radius: 0.75em;
+  --button_color: #0dcaf0;
+  --button_outline_color: #bef4ff;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+}
+
+.button_top {
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.75em 1.5em;
+  background: var(--button_color);
+  color: white;
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+button:hover .button_top {
+  /* Pull the button upwards when hovered */
+  transform: translateY(-0.33em);
+}
+
+button:active .button_top {
+  /* Push the button downwards when pressed */
+  transform: translateY(0);
+}
+
+.bg1 {
+  width: 365px;
+  height: 600px;
+  background-image: url("https://esqcourse.com/wp-content/uploads/2022/10/Hal-yang-Perlu-Diperhatikan-Sebelum-Kursus-Bahasa-Inggris.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.bg1:after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 365px;
+  height: 600px;
+  border-radius: 16px;
+  /* z-index: -2; */
+}
+.bg2 {
+  width: 365px;
+  height: 600px;
+  background-image: url("https://esqcourse.com/wp-content/uploads/2022/10/Kursus-Bahasa-Inggris-Terbaik-untuk-Pemula-Banyak-Praktik-768x512.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.bg2:after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 365px;
+  height: 600px;
+  border-radius: 16px;
+  /* z-index: -2; */
+}
+.bg3 {
+  width: 365px;
+  height: 600px;
+  background-image: url("https://esqcourse.com/wp-content/uploads/2022/10/Biaya-Kursus-Bahasa-Indonesia-dengan-Layanan-yang-Terbaik-768x512.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.bg3:after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 365px;
+  height: 600px;
+  border-radius: 16px;
+  /* z-index: -2; */
 }

@@ -1,15 +1,12 @@
 import { useState } from "react";
 import "../../styles/styles.css";
 import Logo from "../../asset/icon/Planty's Logo.svg";
-import Input from "../../component/Input";
+import { Input, Radio, Button, InputPassword } from "../../component";
 import Profile from "../../asset/icon/Profile.svg";
-import Radio from "../../component/Radio";
-import Button from "../../component/Button";
 import Email from "../../asset/icon/Message.svg";
 import signUp from "../../asset/image/signUp.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import InputPassword from "../../component/Input Password";
 import { authRegister } from "../redux/action/authAction";
 import Swal from "sweetalert2";
 
@@ -63,6 +60,16 @@ const Register = () => {
           icon: "success",
           title: "Sign up in successfully",
         });
+        setPayload(() => {
+          return {
+            name: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            status: "",
+            jenisKelamin: "",
+          };
+        });
         return navigate("/login", { replace: true });
       } else {
         setEmailError(response?.response?.data?.errors?.email?.msg);
@@ -70,27 +77,17 @@ const Register = () => {
         setJenisError(response?.response?.data?.errors?.jenisKelamin?.msg);
         setStatusError(response?.response?.data?.errors?.status?.msg);
         setPasswordError(response?.response?.data?.errors?.password?.msg);
-        if (payload.password === payload.confirmPassword) {
+        if (payload.password !== payload.confirmPassword) {
           setConPasswordError("Password harus sama");
         }
-        if (payload.confirmPassword === "") {
-          setConPasswordError("confirmasi Password harus diisi");
-        }
+        // if (payload.confirmPassword === "") {
+        //   setConPasswordError("confirmasi Password harus diisi");
+        // }
       }
     } catch (err) {
     } finally {
       setIsLoading(false);
     }
-    setPayload(() => {
-      return {
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        status: "",
-        jenisKelamin: "",
-      };
-    });
   };
   return (
     <div className="bg w-screen h-screen p-4">

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/styles.css";
 import Logo from "../../asset/icon/Planty's Logo.svg";
-import Input from "../../component/Input";
-import Button from "../../component/Button";
+import {Input, Button} from "../../component";
 import Email from "../../asset/icon/Message.svg";
 import forgotPassword from "../../asset/image/forgot password.png";
 import { useNavigate } from "react-router-dom";

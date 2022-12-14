@@ -7,6 +7,9 @@ import {
   Register,
   ResetPassword,
 } from "./page/auth";
+import DetailPage from "./page/DetailPage";
+import History from "./page/History";
+import Keranjang from "./page/Keranjang";
 import ProtectRoutes from "./routers/ProtectRoutes";
 
 export default function App() {
@@ -25,7 +28,31 @@ export default function App() {
             </ProtectRoutes>
           }
         />
-        <Route path="*" element={<Navigate to={"/home"} />} />
+        <Route
+          path="/produk/detail/:uuid"
+          element={
+            <ProtectRoutes>
+              <DetailPage />
+            </ProtectRoutes>
+          }
+        />
+        <Route
+          path="/keranjang"
+          element={
+            <ProtectRoutes>
+              <Keranjang />
+            </ProtectRoutes>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <ProtectRoutes>
+              <History />
+            </ProtectRoutes>
+          }
+        />
+        <Route path="*" element={<Navigate to={"/login"} />} />
       </Routes>
     </div>
   );

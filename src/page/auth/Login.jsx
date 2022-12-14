@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import "../../styles/styles.css";
 import Logo from "../../asset/icon/Planty's Logo.svg";
-import Input from "../../component/Input";
+import { Input, CheckBox, Button, InputPassword } from "../../component";
 import signIn from "../../asset/image/signIn.png";
-import CheckBox from "../../component/CheckBox";
-import Button from "../../component/Button";
 import Devide from "../../asset/icon/Line 1.svg";
 import Email from "../../asset/icon/Message.svg";
 import Circle from "../../asset/icon/Arrow - Down Circle.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import InputPassword from "../../component/Input Password";
 import { authLogin } from "../redux/action/authAction";
 import Swal from "sweetalert2";
 
@@ -39,22 +36,22 @@ const Login = () => {
       const response = await dispatch(authLogin(payload));
       console.log("response", response);
       if (response?.status === "Success") {
-         const Toast = Swal.mixin({
-           toast: true,
-           position: "top-end",
-           showConfirmButton: false,
-           timer: 3000,
-           timerProgressBar: true,
-           didOpen: (toast) => {
-             toast.addEventListener("mouseenter", Swal.stopTimer);
-             toast.addEventListener("mouseleave", Swal.resumeTimer);
-           },
-         });
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
 
-         Toast.fire({
-           icon: "success",
-           title: "Signed in successfully",
-         });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
         return navigate("/home", { replace: true });
       } else {
         const Toast = Swal.mixin({

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { getHistory } from "../API/home";
-import { Navbar, Price, RatingDetail, Star } from "../component";
+import { Navbar, Price, RatingDetail } from "../component";
 import { useNavigate } from "react-router-dom";
-
 
 const History = () => {
   const navigate = useNavigate();
- 
+
   const convertRupiah = require("rupiah-format");
   const [listHistory, setListHistory] = useState([]);
-  const [fetchProduct, setFetchProduct] = useState(false);
+  const [setFetchProduct] = useState(false);
   const [payload, setPayload] = useState({
     kategori: "",
     keyword: "",
@@ -75,14 +74,18 @@ const History = () => {
                   </div>
                   <div className="flex items-center justify-between mb-2 ml-24">
                     {" "}
-                    <Price harga={convertRupiah.convert(item?.produk?.harga)} />
+                    <p className="text-sm font-Poppins text-[#8A8C95]">
+                      Jumlah: {item?.jumlah}
+                    </p>
                     <div className="flex space-x-3">
                       {" "}
                       <p className="text-[#2A977D] font-Poppins font-semibold text-base items-center">
                         Total:
                       </p>
                       <Price
-                        harga={convertRupiah.convert(item?.produk?.harga)}
+                        harga={convertRupiah.convert(
+                          item?.produk?.harga * item?.jumlah
+                        )}
                       />
                     </div>
                   </div>

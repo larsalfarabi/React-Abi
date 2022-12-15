@@ -1,7 +1,7 @@
 /* eslint-disable no-sequences */
 import React, { useState, useEffect } from "react";
-import { getKaranjang, hapusKaranjang, postBeli, ubahItem } from "../API/home";
-import { Button, Navbar, Price, RatingDetail, Star } from "../component";
+import { getKaranjang, hapusKaranjang, postBeli } from "../API/home";
+import { Button, Navbar, Price, RatingDetail } from "../component";
 import { useNavigate } from "react-router-dom";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { FiTrash } from "react-icons/fi";
@@ -175,7 +175,7 @@ const Keranjang = () => {
             <p>Total harga:</p>
             <Price harga={convertRupiah.convert(hasil)} />
           </div>
-          <Button label={"Beli"} onClick={handleBeli} />
+          <Button label={fetchProduct ? "Beli" : "proses"} onClick={handleBeli} />
         </div>
       </div>
 

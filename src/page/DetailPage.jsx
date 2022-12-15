@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   getDetailProduct,
-  getKaranjang,
   postBeli,
   postKaranjang,
 } from "../API/home";

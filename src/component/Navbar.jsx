@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../asset/icon/Planty's Logo-light.svg";
 import bag from "../asset/icon/Bag-white.svg";
-import notification from "../asset/icon/Notification.svg";
 import { Link } from "react-router-dom";
 import InputHome from "./InputHome";
 import { FaHistory } from "react-icons/fa";

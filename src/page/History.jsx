@@ -8,7 +8,7 @@ const History = () => {
 
   const convertRupiah = require("rupiah-format");
   const [listHistory, setListHistory] = useState([]);
-  const [setFetchProduct] = useState(false);
+  const [fetchProduct, setFetchProduct] = useState(false);
   const [payload, setPayload] = useState({
     kategori: "",
     keyword: "",
@@ -83,9 +83,7 @@ const History = () => {
                         Total:
                       </p>
                       <Price
-                        harga={convertRupiah.convert(
-                          item?.produk?.harga * item?.jumlah
-                        )}
+                        harga={convertRupiah.convert(item?.produk?.harga * item?.jumlah)}
                       />
                     </div>
                   </div>

@@ -162,21 +162,19 @@ const Home = () => {
               type="number"
               onChange={handleChange}
             />{" "}
-           
-              {" "}
-              <Button
-                onClick={() => {
-                  setPayload(() => {
-                    return {
-                      kategori: "",
-                      keyword: "",
-                      hargaTerendah: "",
-                      hargaTertinggi: "",
-                    };
-                  });
-                }}
-                label={"Reset"}
-              />
+            <Button
+              onClick={() => {
+                setPayload(() => {
+                  return {
+                    kategori: "",
+                    keyword: "",
+                    hargaTerendah: "",
+                    hargaTertinggi: "",
+                  };
+                });
+              }}
+              label={"Reset"}
+            />
           </div>
         </div>
       </div>

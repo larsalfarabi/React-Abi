@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { useState, useEffect } from "react";
 import { getKaranjang, hapusKaranjang, postBeli, ubahItem } from "../API/home";
 import { Button, Navbar, Price, RatingDetail, Star } from "../component";
@@ -7,37 +8,28 @@ import { FiTrash } from "react-icons/fi";
 import no_produk from "../asset/image/no-shopping-cart.png";
 import Swal from "sweetalert2";
 import "../styles/styles.css";
-import InputHome from "../component/InputHome";
+import { item } from "./redux/action/authAction";
+import { useDispatch } from "react-redux";
+
 const Keranjang = () => {
   const convertRupiah = require("rupiah-format");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [payload, setPayload] = useState({
-    id: "",
-    jumlah: "",
-  });
   const [load, setLoad] = useState({
     data: "",
   });
   const [listKeranjang, setListKeranjang] = useState([]);
   const [fetchProduct, setFetchProduct] = React.useState(false);
-  const [totalSum, setTotalSum] = useState([]);
-
+  const [payload, setPayload] = useState({});
   const tambahItem = async (id, jumlah) => {
     try {
-      const response = await ubahItem(id, jumlah);
-      console.log("item =>", response);
       getListKeranjang();
+      const response = await dispatch(item(payload));
+      setPayload({ id: id, jumlah: jumlah });
+      console.log("item =>", response);
     } catch (err) {
     } finally {
     }
-  };
-  const handleChange = async (e) => {
-    setPayload((payload) => {
-      return {
-        ...payload,
-        [e.target.name]: e.target.value,
-      };
-    });
   };
   const handleBeli = async () => {
     try {
@@ -91,7 +83,7 @@ const Keranjang = () => {
       setFetchProduct(false);
     }
   };
-  let array = listKeranjang.map((value) => value?.produk?.harga);
+  let array = listKeranjang.map((value) => value?.produk?.harga * value.jumlah);
   const hasil = array.reduce((total, currentValue) => total + currentValue, 0);
   console.log("hasil =>", hasil);
   useEffect(() => {
@@ -112,7 +104,14 @@ const Keranjang = () => {
               listKeranjang?.map((item, index) => {
                 const json = item?.produk?.gambarProduk;
                 const obj = JSON.parse(json);
-
+                const increment = () => {
+                  tambahItem(item?.id, item?.jumlah + 1);
+                  getListKeranjang();
+                };
+                const decrement = () => {
+                  tambahItem(item?.id, item?.jumlah - 1);
+                  getListKeranjang();
+                };
                 return (
                   <div
                     key={index}
@@ -147,19 +146,20 @@ const Keranjang = () => {
                       <div className="flex items-center space-x-3 ml-24">
                         <FaMinusCircle
                           onClick={() => {
-                            tambahItem(item?.id, item?.jumlah - 1);
+                           return decrement();
                           }}
                         />
-                        <p></p>
+                        <p>{item?.jumlah}</p>
                         <FaPlusCircle
                           onClick={() => {
-                            console.log("tambah");
-                            tambahItem(item?.id, item?.jumlah);
+                           return increment();
                           }}
                         />
                       </div>
                       <Price
-                        harga={convertRupiah.convert(item?.produk?.harga)}
+                        harga={convertRupiah.convert(
+                          item?.produk?.harga * item?.jumlah
+                        )}
                       />
                     </div>
                   </div>

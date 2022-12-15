@@ -6,6 +6,7 @@ import {
   resetProses,
 } from "../../../API/auth";
 import Cookies from "js-cookie";
+import { ubahItem } from "../../../API/home";
 
 export function authLogin(payload) {
   return async (dispatch) => {
@@ -113,6 +114,21 @@ export function authMe(payload) {
 
       Cookies.set("myapps_token", data?.token);
       return data;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  };
+}
+export function item(payload) {
+  console.log(payload)
+  return async (dispatch) => {
+    try {
+      let response = await ubahItem(payload);
+      let data = response;
+      console.log(data.data)
+      
+      // return data;
     } catch (err) {
       console.log(err);
       return err;

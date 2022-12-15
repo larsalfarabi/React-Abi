@@ -33,8 +33,8 @@ export async function postBeli(payload) {
   return axios.post(`/beli/tambah`, payload);
 }
 
-export async function ubahItem(id, jumlah) {
-  return axios.put(`/keranjang/ubah-jumlah-item`, id, jumlah);
+export async function ubahItem(payload) {
+  return axios.put(`/keranjang/ubah-jumlah-item`, payload);
 }
 export async function getHistory() {
   return axios.get(`/beli/history`);

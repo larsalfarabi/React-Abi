@@ -3,8 +3,10 @@ import { getHistory } from "../API/home";
 import { Navbar, Price, RatingDetail, Star } from "../component";
 import { useNavigate } from "react-router-dom";
 
+
 const History = () => {
   const navigate = useNavigate();
+ 
   const convertRupiah = require("rupiah-format");
   const [listHistory, setListHistory] = useState([]);
   const [fetchProduct, setFetchProduct] = useState(false);
@@ -33,6 +35,7 @@ const History = () => {
       setFetchProduct(false);
     }
   };
+  console.log("listHistory", listHistory);
   useEffect(() => {
     getListHistory();
   }, []);
@@ -43,8 +46,8 @@ const History = () => {
         <div className="overflow-auto scroll-smooth bar ">
           <div className="space-y-3 gap-4 p-5">
             {listHistory?.map((item, index) => {
-              //   const obj = JSON.parse(item?.produk?.gambarProduk);
-              //   const obj = JSON.parse(json);
+              // const json = item?.produk?.gambarProduk;
+              // const obj = JSON.parse(json);
               // console.log("obj",obj);
               return (
                 <div
@@ -53,11 +56,12 @@ const History = () => {
                 >
                   <div className="flex justify-between w-full ">
                     <div className="flex space-x-4">
+                      {" "}
                       <img
-                        // src={obj[0].gambar1}
+                        // src={obj[0]?.gambar1}
                         className="border border-slate-200  w-20 h-20 rounded-md"
                         alt={item?.produk?.namaProduk}
-                      />
+                      />{" "}
                       <p className="font-Poppins font-semibold text-sm">
                         {item?.produk?.namaProduk}
                       </p>

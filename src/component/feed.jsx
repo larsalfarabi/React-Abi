@@ -3,7 +3,7 @@ import "../styles/styles.css";
 import { FaChevronDown } from "react-icons/fa";
 const Feed = () => {
   return (
-    <div className="h-1/2">
+    <div className="h-1/2" id="home">
       <h1 className="text-[80px] font-semibold text-white">
         learn <span className="text-[#0DCAF0]">English</span> different way
       </h1>

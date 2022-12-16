@@ -49,7 +49,7 @@ const NavBar = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <a
-                        href="#"
+                        href="#toefl"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -64,7 +64,7 @@ const NavBar = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <a
-                        href="#"
+                        href="#toeic"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -79,7 +79,7 @@ const NavBar = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <a
-                        href="#"
+                        href="#private"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -87,7 +87,7 @@ const NavBar = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        English Certification
+                        Class Private
                       </a>
                     )}
                   </Menu.Item>

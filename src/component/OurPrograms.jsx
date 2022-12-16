@@ -1,7 +1,7 @@
 import React from "react";
 import { CgList } from "react-icons/cg";
 import { FaCheck } from "react-icons/fa";
-import '../styles/styles.css'
+import "../styles/styles.css";
 const OurPrograms = () => {
   return (
     <div className="h-full w-full bg-[#E2EDFF]">
@@ -15,7 +15,10 @@ const OurPrograms = () => {
         <div className="w-[100px] h-1 bg-[#0dcaf0] mx-[624.5px] mt-1"></div>
       </div>
       <div className="flex px-16 justify-around ">
-        <div className="bg-white h-[350px] w-[350px] rounded-lg border border-gray-300 p-8">
+        <div
+          className="bg-white h-[350px] w-[350px] rounded-lg border border-gray-300 p-8 "
+          id="toeic"
+        >
           <p className="font text-base font-semibold mb-3">01</p>
           <h1 className="font text-lg font-semibold text-[#FF6651]">TOEIC ®</h1>
           <div className="mt-5 space-y-2">
@@ -33,7 +36,10 @@ const OurPrograms = () => {
             </button>
           </div>
         </div>
-        <div className="bg-white h-[350px] w-[350px] rounded-lg border border-gray-300 p-8">
+        <div
+          className="bg-white h-[350px] w-[350px] rounded-lg border border-gray-300 p-8"
+          id="toefl"
+        >
           {" "}
           <p className="font text-base font-semibold mb-3">02</p>
           <h1 className="font text-lg font-semibold text-[#54BAF3] ">
@@ -54,7 +60,10 @@ const OurPrograms = () => {
             </button>
           </div>
         </div>
-        <div className="bg-white h-[350px] w-[350px]  rounded-lg border border-gray-300 p-8">
+        <div
+          className="bg-white h-[350px] w-[350px]  rounded-lg border border-gray-300 p-8"
+          id="private"
+        >
           <p className="font text-base font-semibold">03</p>
           <h1 className="font text-lg font-semibold text-[#705DF2] ">
             PRIVATE CLASS

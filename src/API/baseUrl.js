@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const clientLogin = axios.create({
-  baseURL: "http://34.128.70.114",
+  baseURL: "https://sainuu.xyz",
 
   headers: {
     Accept: "application/json",
@@ -20,7 +20,7 @@ clientLogin.interceptors.response.use(
     console.log("err", error);
     if (401 === error.response.status) {
       Cookies.remove("myapps_token");
-      
+
       clearToken();
       localStorage.clear();
       window.location.replace("/login");

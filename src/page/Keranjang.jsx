@@ -146,13 +146,13 @@ const Keranjang = () => {
                       <div className="flex items-center space-x-3 ml-24">
                         <FaMinusCircle
                           onClick={() => {
-                           return decrement();
+                            return decrement();
                           }}
                         />
                         <p>{item?.jumlah}</p>
                         <FaPlusCircle
                           onClick={() => {
-                           return increment();
+                            return increment();
                           }}
                         />
                       </div>
@@ -175,7 +175,10 @@ const Keranjang = () => {
             <p>Total harga:</p>
             <Price harga={convertRupiah.convert(hasil)} />
           </div>
-          <Button label={fetchProduct ? "Beli" : "proses"} onClick={handleBeli} />
+          <Button
+            label={fetchProduct ? "Proses" : "Beli"}
+            onClick={handleBeli}
+          />
         </div>
       </div>
 

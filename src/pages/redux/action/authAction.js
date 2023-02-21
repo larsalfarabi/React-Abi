@@ -10,6 +10,7 @@ export function authLogin(payload) {
         type: "login",
         name: data?.user?.name,
         email: data?.user?.email,
+        role: data?.user?.role,
         isAuth: true,
       });
       Cookies.set("myapps_token", data?.token);

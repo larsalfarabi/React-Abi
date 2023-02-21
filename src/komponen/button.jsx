@@ -36,7 +36,7 @@ export default function Button({ title, color, disabled, ...props }) {
           color: color,
           opacity: disabled ? 0.5 : 1,
         }}
-        className="button2"
+        className="button2 font-semibold text-[13px]"
         {...props}
       >
         {title}

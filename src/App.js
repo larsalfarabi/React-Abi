@@ -8,6 +8,9 @@ import DetailArticle from "./pages/article/detailArticle";
 import UpdateArticle from "./pages/article/updateArticle";
 import { useSelector } from "react-redux";
 import Register from "./pages/auth/register";
+import CreateOutlet from "./pages/outlet/createOutlet";
+import Dashboard from "./pages/dashboard";
+import Home from "./pages/home";
 // import Input from "./component/Input";
 // import TextArea from "./component/TextArea";
 // import Button from "./component/Button";
@@ -18,15 +21,7 @@ export default function App() {
   console.log(color);
 
   return (
-    <div className="">
-      <h1
-        style={{
-          backgroundColor: color.color,
-        }}
-      >
-        {" "}
-        branch API
-      </h1>
+    <div className="bg-[#F5F2EA] h-screen">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -38,6 +33,11 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/home" element={<Home />}>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
+
+        <Route path="/outlet/createOutlet" element={<CreateOutlet />} />
         <Route
           path="/article/createArticle"
           element={
@@ -63,7 +63,7 @@ export default function App() {
           }
         />
 
-        <Route path="*" element={<Navigate to="/article" replace={true} />} />
+        {/* <Route path="*" element={<Navigate to="/home" replace={true} />} /> */}
       </Routes>
     </div>
   );
